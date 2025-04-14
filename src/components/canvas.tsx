@@ -38,17 +38,18 @@ export const Canvas: React.FC = () => {
   };
 
   return (
-    <div className="flex">
-      <AnnotationToolbar onToolChange={handleToolChange} />
-      <canvas
-        ref={canvasRef}
-        width={800}
-        height={600}
-        className="flex-grow bg-background cursor-crosshair"
-        style={{ border: '1px solid #000' }} // Basic border for visibility
-        onMouseDown={handleMouseDown}
-        onMouseUp={handleMouseUp}
-      />
-    </div>
+    
+      
+        <canvas
+          ref={canvasRef}
+          width={800}
+          height={600}
+          className="flex-grow bg-background cursor-crosshair"
+          style={{ border: '1px solid #000' }} // Basic border for visibility
+          onMouseDown={handleMouseDown}
+          onMouseUp={handleMouseUp}
+        />
+      
+    
   );
 };
