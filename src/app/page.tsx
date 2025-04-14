@@ -26,14 +26,15 @@ export default function HomePage() {
   return (
     <SidebarProvider>
       <div className="flex h-screen w-full">
-        <AnnotationToolbar/>
         <Canvas zoomLevel={zoomLevel} />
+        <AnnotationToolbar/>
+        
         <div className="fixed top-0 right-0 h-full">
           <FutureDevelopmentToolbar />
         </div>
 
         {/* Zoom Controls */}
-        <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-secondary/75 backdrop-blur-sm rounded-lg p-2 flex items-center space-x-2">
+        <div className="absolute bottom-4 right-4 bg-secondary/75 backdrop-blur-sm rounded-lg p-2 flex items-center space-x-2">
           <Button variant="outline" size="icon" onClick={handleZoomIn}>
             <ZoomIn className="h-4 w-4"/>
             <span className="sr-only">Zoom In</span>
