@@ -1,10 +1,11 @@
+
 "use client";
 
 import React from 'react';
 import { Button } from "@/components/ui/button";
 import {
   MousePointerIcon,
-  RectangleVertical as Rectangle,
+  RectangleVertical as RectangleIcon,
   Circle,
   ArrowRight,
   PencilIcon,
@@ -16,7 +17,7 @@ interface ToolBarProps {
   onToolChange: (tool: string) => void;
 }
 
-export const ToolBar: React.FC<ToolBarProps> = ({ onToolChange }) => {
+export const AnnotationToolbar: React.FC<ToolBarProps> = ({ onToolChange }) => {
   return (
     <div className="flex flex-col items-center p-4 border-r border-border">
       <h2 className="text-sm font-semibold mb-2">Annotation Tools</h2>
@@ -25,7 +26,7 @@ export const ToolBar: React.FC<ToolBarProps> = ({ onToolChange }) => {
         <span className="sr-only">Select</span>
       </Button>
       <Button variant="ghost" size="icon" className="mb-2" onClick={() => onToolChange('rectangle')}>
-        <Rectangle className="h-5 w-5" />
+        <RectangleIcon className="h-5 w-5" />
         <span className="sr-only">Rectangle</span>
       </Button>
       <Button variant="ghost" size="icon" className="mb-2" onClick={() => onToolChange('circle')}>

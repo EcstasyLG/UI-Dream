@@ -1,4 +1,4 @@
-import {ArrowRight, Check, ChevronsUpDown, Circle, Copy, Edit, ExternalLink, File, HelpCircle, Home, Loader2, Mail, MessageSquare, Moon, Plus, PlusCircle, Search, Server, Settings, Share2, Shield, Sun, Trash, User, X, Workflow, Sparkles, ImageIcon, MapPinIcon, Lightbulb, TextIcon, PencilIcon, MousePointerIcon, RectangleIcon, CircleIcon as CircleIconLucide, ArrowRightIcon as ArrowRightIconLucide} from 'lucide-react';
+import {ArrowRight, Check, ChevronsUpDown, Circle, Copy, Edit, ExternalLink, File, HelpCircle, Home, Loader2, Mail, MessageSquare, Moon, Plus, PlusCircle, Search, Server, Settings, Share2, Shield, Sun, Trash, User, X, Workflow, Sparkles, ImageIcon, MapPinIcon, Lightbulb, TextIcon, PencilIcon, MousePointerIcon, RectangleVertical as RectangleIcon, CircleIcon as CircleIconLucide, ArrowRightIcon as ArrowRightIconLucide, Film, Cube} from 'lucide-react';
 
 const Icons = {
   arrowRight: ArrowRight,
@@ -37,7 +37,10 @@ const Icons = {
   mousePointerIcon: MousePointerIcon,
   rectangleIcon: RectangleIcon,
   circleIconLucide: CircleIconLucide,
-  arrowRightIconLucide: ArrowRightIconLucide
+  arrowRightIconLucide: ArrowRightIconLucide,
+  film: Film,
+  cube: Cube,
 };
 
 export {Icons};
+

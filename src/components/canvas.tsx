@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useRef, useEffect } from 'react';
-import { ToolBar } from './toolbar'; // Import the ToolBar component
+import { AnnotationToolbar } from './toolbar'; // Import the AnnotationToolbar component
 
 export const Canvas: React.FC = () => {
   const [selectedTool, setSelectedTool] = useState<string>('select');
@@ -39,7 +39,7 @@ export const Canvas: React.FC = () => {
 
   return (
     <div className="flex">
-      <ToolBar onToolChange={handleToolChange} />
+      <AnnotationToolbar onToolChange={handleToolChange} />
       <canvas
         ref={canvasRef}
         width={800}
@@ -52,4 +52,3 @@ export const Canvas: React.FC = () => {
     </div>
   );
 };
-
