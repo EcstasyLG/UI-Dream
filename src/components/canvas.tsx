@@ -47,5 +47,3 @@ export const Canvas: React.FC<CanvasProps> = ({zoomLevel}) => {
     
   );
 };
-
-    

@@ -1,4 +1,3 @@
-
 'use client';
 
 import {SidebarProvider} from '@/components/ui/sidebar';
@@ -7,6 +6,7 @@ import {Canvas} from '@/components/canvas';
 import {useState, useRef, useEffect} from 'react';
 import {Button} from '@/components/ui/button';
 import {ZoomIn, ZoomOut, Home} from 'lucide-react';
+import {AnnotationToolbar} from '@/components/toolbar';
 
 export default function HomePage() {
   const [zoomLevel, setZoomLevel] = useState(100); // Zoom level as percentage
@@ -46,6 +46,13 @@ export default function HomePage() {
     };
   }, []);
 
+  const [selectedTool, setSelectedTool] = useState<string>('select');
+
+  const handleToolChange = (tool: string) => {
+    setSelectedTool(tool);
+    console.log(`Selected tool: ${tool}`);
+  };
+
   return (
     <SidebarProvider>
       <div className="flex flex-col h-screen w-full">
@@ -84,6 +91,9 @@ export default function HomePage() {
         </header>
 
         <div className="flex flex-grow">
+          {/* Annotation Toolbar on the Left */}
+          <AnnotationToolbar onToolChange={handleToolChange} />
+
           {/* Canvas occupies the center */}
           <div ref={canvasRef} className="flex-grow overflow-auto">
             <Canvas zoomLevel={zoomLevel} />
@@ -91,36 +101,6 @@ export default function HomePage() {
 
           {/* Future Development Toolbar on the Right */}
           <FutureDevelopmentToolbar />
-
-          {/* Integrated Minimap and Zoom Controls on the Bottom Right */}
-          <div className="absolute bottom-4 right-4 flex flex-col bg-secondary/75 backdrop-blur-sm rounded-lg p-2">
-            {/* Minimap */}
-            <div className="w-full">
-              <div className="text-xs text-white/80">Canvas Position</div>
-              <div className="text-xs text-white/60">
-                X: {canvasPosition.x}, Y: {canvasPosition.y}
-              </div>
-              {/* Placeholder for actual minimap */}
-              <div className="bg-gray-500 h-16 mt-1 rounded"></div>
-            </div>
-
-            {/* Zoom Controls */}
-            <div className="flex items-center space-x-2 mt-2">
-              <Button variant="outline" size="icon" onClick={handleZoomIn}>
-                <ZoomIn className="h-4 w-4"/>
-                <span className="sr-only">Zoom In</span>
-              </Button>
-              <Button variant="outline" size="icon" onClick={handleZoomOut}>
-                <ZoomOut className="h-4 w-4"/>
-                <span className="sr-only">Zoom Out</span>
-              </Button>
-              <Button variant="outline" size="icon" onClick={handleCenter}>
-                <Home className="h-4 w-4"/>
-                <span className="sr-only">Center</span>
-              </Button>
-              <span className="text-sm">{zoomLevel}%</span>
-            </div>
-          </div>
         </div>
       </div>
     </SidebarProvider>
