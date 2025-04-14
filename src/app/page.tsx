@@ -10,9 +10,10 @@ export default function Home() {
       <div className="flex h-screen w-full">
         <AnnotationToolbar/>
         <Canvas />
-        <FutureDevelopmentToolbar />
+        <div className="fixed top-0 right-0 h-full">
+          <FutureDevelopmentToolbar />
+        </div>
       </div>
     </SidebarProvider>
   );
 }
-
