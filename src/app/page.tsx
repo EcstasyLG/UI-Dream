@@ -62,10 +62,9 @@ export default function HomePage() {
           <FutureDevelopmentToolbar />
         </div>
 
-        {/* Zoom Controls on the Bottom Right */}
-        <div className="absolute bottom-4 right-4 bg-secondary/75 backdrop-blur-sm rounded-lg p-2 flex flex-col items-center space-y-2">
-
-          {/* Minimap on the Top Right */}
+        {/* Zoom Controls and Minimap on the Bottom Right */}
+        <div className="absolute bottom-4 right-4 flex flex-col items-center space-y-2 bg-secondary/75 backdrop-blur-sm rounded-lg p-2">
+          {/* Minimap */}
           <div className="bg-secondary/75 backdrop-blur-sm rounded-lg p-2 w-32 h-24">
             <div className="text-xs text-white/80">Canvas Position</div>
             <div className="text-xs text-white/60">
@@ -75,6 +74,7 @@ export default function HomePage() {
             <div className="bg-gray-500 h-16 mt-1 rounded"></div>
           </div>
 
+          {/* Zoom Controls */}
           <div className="flex items-center space-x-2">
             <Button variant="outline" size="icon" onClick={handleZoomIn}>
               <ZoomIn className="h-4 w-4"/>
