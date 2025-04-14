@@ -7,10 +7,12 @@ interface CanvasProps {
   selectedTool: string;
 }
 
-export const Canvas: React.FC<CanvasProps> = ({zoomLevel, selectedTool}) => {
+export const Canvas: React.FC<CanvasProps> = ({ zoomLevel, selectedTool}) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const [drawing, setDrawing] = useState(false);
   const lastPosition = useRef({ x: 0, y: 0 });
+  const [text, setText] = useState('');
+  const [textPosition, setTextPosition] = useState({ x: 0, y: 0 });
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -32,9 +34,15 @@ export const Canvas: React.FC<CanvasProps> = ({zoomLevel, selectedTool}) => {
     ctx.fillStyle = 'blue';
     ctx.fillRect(50, 50, 100, 50);
 
+    if (text) {
+      ctx.fillStyle = 'black';
+      ctx.font = '20px sans-serif';
+      ctx.fillText(text, textPosition.x, textPosition.y);
+    }
+
     // Restore the transformation matrix
     ctx.restore();
-  }, [zoomLevel]);
+  }, [zoomLevel, text, textPosition]);
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -52,6 +60,15 @@ export const Canvas: React.FC<CanvasProps> = ({zoomLevel, selectedTool}) => {
           x: e.offsetX / scaleFactor,
           y: e.offsetY / scaleFactor
         };
+      }
+
+      if (selectedTool === 'text') {
+        const newText = prompt('Enter text:') || '';
+        setText(newText);
+        setTextPosition({
+          x: e.offsetX / scaleFactor,
+          y: e.offsetY / scaleFactor
+        });
       }
     };
 
