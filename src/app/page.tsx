@@ -7,6 +7,7 @@ import {useState, useRef, useEffect} from 'react';
 import {Button} from '@/components/ui/button';
 import {ZoomIn, ZoomOut, Home} from 'lucide-react';
 import {AnnotationToolbar} from '@/components/toolbar';
+import {Input} from "@/components/ui/input";
 
 export default function HomePage() {
   const [zoomLevel, setZoomLevel] = useState(100); // Zoom level as percentage
@@ -101,6 +102,11 @@ export default function HomePage() {
 
           {/* Future Development Toolbar on the Right */}
           <FutureDevelopmentToolbar />
+        </div>
+
+        {/* Chat Input (Bottom) */}
+        <div className="absolute bottom-4 left-4 w-2/3 px-3 py-2 bg-secondary/75 rounded">
+          <Input type="text" placeholder="Enter your prompt here..." />
         </div>
 
         {/* Zoom Controls and Minimap (Bottom Right Corner) */}
