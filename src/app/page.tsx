@@ -4,12 +4,14 @@ import {SidebarProvider} from '@/components/ui/sidebar';
 import {FutureDevelopmentToolbar} from '@/components/future-development-toolbar';
 import {Canvas} from '@/components/canvas';
 import {AnnotationToolbar} from '@/components/toolbar';
-import {useState} from 'react';
+import {useState, useRef, useEffect} from 'react';
 import {Button} from '@/components/ui/button';
 import {ZoomIn, ZoomOut, Home} from 'lucide-react';
 
 export default function HomePage() {
   const [zoomLevel, setZoomLevel] = useState(100); // Zoom level as percentage
+  const canvasRef = useRef<HTMLDivElement>(null);
+  const [canvasPosition, setCanvasPosition] = useState({x: 0, y: 0});
 
   const handleZoomIn = () => {
     setZoomLevel(prevZoom => Math.min(prevZoom + 10, 200)); // Zoom in, max 200%
@@ -21,7 +23,28 @@ export default function HomePage() {
 
   const handleCenter = () => {
     setZoomLevel(100); // Reset to 100%
+    setCanvasPosition({x: 0, y: 0}); // Reset canvas position
   };
+
+  // Update canvas position based on scroll
+  useEffect(() => {
+    const canvasElement = canvasRef.current;
+    if (!canvasElement) return;
+
+    const updatePosition = () => {
+      setCanvasPosition({
+        x: canvasElement.scrollLeft,
+        y: canvasElement.scrollTop,
+      });
+    };
+
+    canvasElement.addEventListener('scroll', updatePosition);
+    updatePosition(); // Initial update
+
+    return () => {
+      canvasElement.removeEventListener('scroll', updatePosition);
+    };
+  }, []);
 
   return (
     <SidebarProvider>
@@ -30,7 +53,9 @@ export default function HomePage() {
         <AnnotationToolbar/>
 
         {/* Canvas occupies the center */}
-        <Canvas zoomLevel={zoomLevel} />
+        <div ref={canvasRef} className="flex-grow overflow-auto">
+          <Canvas zoomLevel={zoomLevel} />
+        </div>
 
         {/* Future Development Toolbar on the Right */}
         <div className="fixed top-0 right-0 h-full">
@@ -52,6 +77,16 @@ export default function HomePage() {
             <span className="sr-only">Center</span>
           </Button>
           <span className="text-sm">{zoomLevel}%</span>
+        </div>
+
+        {/* Minimap on the Top Right */}
+        <div className="absolute top-4 right-4 bg-secondary/75 backdrop-blur-sm rounded-lg p-2 w-32 h-24">
+          <div className="text-xs text-white/80">Canvas Position</div>
+          <div className="text-xs text-white/60">
+            X: {canvasPosition.x}, Y: {canvasPosition.y}
+          </div>
+          {/* Placeholder for actual minimap */}
+          <div className="bg-gray-500 h-16 mt-1 rounded"></div>
         </div>
       </div>
     </SidebarProvider>
