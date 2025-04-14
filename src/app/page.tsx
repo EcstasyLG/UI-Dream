@@ -1,9 +1,9 @@
+
 'use client';
 
 import {SidebarProvider} from '@/components/ui/sidebar';
 import {FutureDevelopmentToolbar} from '@/components/future-development-toolbar';
 import {Canvas} from '@/components/canvas';
-import {AnnotationToolbar} from '@/components/toolbar';
 import {useState, useRef, useEffect} from 'react';
 import {Button} from '@/components/ui/button';
 import {ZoomIn, ZoomOut, Home} from 'lucide-react';
@@ -84,9 +84,6 @@ export default function HomePage() {
         </header>
 
         <div className="flex flex-grow">
-          {/* Annotation Toolbar on the Left */}
-          <AnnotationToolbar/>
-
           {/* Canvas occupies the center */}
           <div ref={canvasRef} className="flex-grow overflow-auto">
             <Canvas zoomLevel={zoomLevel} />

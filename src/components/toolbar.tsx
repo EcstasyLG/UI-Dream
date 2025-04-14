@@ -20,7 +20,6 @@ interface ToolBarProps {
 export const AnnotationToolbar: React.FC<ToolBarProps> = ({ onToolChange }) => {
   return (
     <div className="flex flex-col items-center p-4 border-r border-border">
-      <h2 className="text-sm font-semibold mb-2">Annotation Tools</h2>
       <Button variant="ghost" size="icon" className="mb-2" onClick={() => onToolChange('select')}>
         <MousePointerIcon className="h-5 w-5" />
         <span className="sr-only">Select</span>
@@ -52,3 +51,4 @@ export const AnnotationToolbar: React.FC<ToolBarProps> = ({ onToolChange }) => {
     </div>
   );
 };
+
