@@ -48,47 +48,80 @@ export default function HomePage() {
 
   return (
     <SidebarProvider>
-      <div className="flex h-screen w-full">
-        {/* Annotation Toolbar on the Left */}
-        <AnnotationToolbar/>
+      <div className="flex flex-col h-screen w-full">
+        {/* Header */}
+        <header className="flex items-center justify-between h-14 bg-secondary/75 backdrop-blur-sm text-sm font-medium border-b border-border px-4">
+          <div className="flex items-center">
+            <span className="font-bold">Firebase Studio App</span>
+            <nav className="ml-6 flex items-center space-x-4">
+              <a href="#" className="hover:underline">File</a>
+              <a href="#" className="hover:underline">Edit</a>
+              <a href="#" className="hover:underline">View</a>
+            </nav>
+          </div>
+          <div>
+            {/* User Icon Placeholder */}
+            <Button variant="ghost" size="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                className="h-4 w-4"
+              >
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span className="sr-only">User</span>
+            </Button>
+          </div>
+        </header>
 
-        {/* Canvas occupies the center */}
-        <div ref={canvasRef} className="flex-grow overflow-auto">
-          <Canvas zoomLevel={zoomLevel} />
-        </div>
+        <div className="flex flex-grow">
+          {/* Annotation Toolbar on the Left */}
+          <AnnotationToolbar/>
 
-        {/* Future Development Toolbar on the Right */}
-        <div className="fixed top-0 right-0 h-full">
-          <FutureDevelopmentToolbar />
-        </div>
-
-        {/* Integrated Minimap and Zoom Controls on the Bottom Right */}
-        <div className="absolute bottom-4 right-4 flex flex-col bg-secondary/75 backdrop-blur-sm rounded-lg p-2">
-          {/* Minimap */}
-          <div className="w-full">
-            <div className="text-xs text-white/80">Canvas Position</div>
-            <div className="text-xs text-white/60">
-              X: {canvasPosition.x}, Y: {canvasPosition.y}
-            </div>
-            {/* Placeholder for actual minimap */}
-            <div className="bg-gray-500 h-16 mt-1 rounded"></div>
+          {/* Canvas occupies the center */}
+          <div ref={canvasRef} className="flex-grow overflow-auto">
+            <Canvas zoomLevel={zoomLevel} />
           </div>
 
-          {/* Zoom Controls */}
-          <div className="flex items-center space-x-2 mt-2">
-            <Button variant="outline" size="icon" onClick={handleZoomIn}>
-              <ZoomIn className="h-4 w-4"/>
-              <span className="sr-only">Zoom In</span>
-            </Button>
-            <Button variant="outline" size="icon" onClick={handleZoomOut}>
-              <ZoomOut className="h-4 w-4"/>
-              <span className="sr-only">Zoom Out</span>
-            </Button>
-            <Button variant="outline" size="icon" onClick={handleCenter}>
-              <Home className="h-4 w-4"/>
-              <span className="sr-only">Center</span>
-            </Button>
-            <span className="text-sm">{zoomLevel}%</span>
+          {/* Future Development Toolbar on the Right */}
+          <FutureDevelopmentToolbar />
+
+          {/* Integrated Minimap and Zoom Controls on the Bottom Right */}
+          <div className="absolute bottom-4 right-4 flex flex-col bg-secondary/75 backdrop-blur-sm rounded-lg p-2">
+            {/* Minimap */}
+            <div className="w-full">
+              <div className="text-xs text-white/80">Canvas Position</div>
+              <div className="text-xs text-white/60">
+                X: {canvasPosition.x}, Y: {canvasPosition.y}
+              </div>
+              {/* Placeholder for actual minimap */}
+              <div className="bg-gray-500 h-16 mt-1 rounded"></div>
+            </div>
+
+            {/* Zoom Controls */}
+            <div className="flex items-center space-x-2 mt-2">
+              <Button variant="outline" size="icon" onClick={handleZoomIn}>
+                <ZoomIn className="h-4 w-4"/>
+                <span className="sr-only">Zoom In</span>
+              </Button>
+              <Button variant="outline" size="icon" onClick={handleZoomOut}>
+                <ZoomOut className="h-4 w-4"/>
+                <span className="sr-only">Zoom Out</span>
+              </Button>
+              <Button variant="outline" size="icon" onClick={handleCenter}>
+                <Home className="h-4 w-4"/>
+                <span className="sr-only">Center</span>
+              </Button>
+              <span className="text-sm">{zoomLevel}%</span>
+            </div>
           </div>
         </div>
       </div>
