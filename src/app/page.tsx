@@ -59,7 +59,7 @@ export default function HomePage() {
         {/* Header */}
         <header className="flex items-center justify-between h-14 bg-secondary/75 backdrop-blur-sm text-sm font-medium border-b border-border px-4">
           <div className="flex items-center">
-            <span className="font-bold">Firebase Studio App</span>
+            <span className="font-bold">Architekt Canvas</span>
           </div>
           <nav className="flex items-center space-x-4 justify-center">
             {/* Centered Navigation Links */}
@@ -101,6 +101,30 @@ export default function HomePage() {
 
           {/* Future Development Toolbar on the Right */}
           <FutureDevelopmentToolbar />
+        </div>
+
+        {/* Zoom Controls and Minimap (Bottom Right Corner) */}
+        <div className="absolute bottom-4 right-4 flex flex-col items-center">
+          {/* Minimap Placeholder (Replace with actual minimap component) */}
+          <div className="w-20 h-20 bg-gray-200 border border-gray-300 mb-2 rounded shadow-md">
+            {/* Add minimap content here */}
+            Minimap
+          </div>
+          <div className="flex items-center space-x-2 bg-secondary/75 rounded p-2">
+            <Button variant="ghost" size="icon" onClick={handleZoomIn}>
+              <ZoomIn className="h-5 w-5" />
+              <span className="sr-only">Zoom In</span>
+            </Button>
+            <Button variant="ghost" size="icon" onClick={handleZoomOut}>
+              <ZoomOut className="h-5 w-5" />
+              <span className="sr-only">Zoom Out</span>
+            </Button>
+            <Button variant="ghost" size="icon" onClick={handleCenter}>
+              <Home className="h-5 w-5" />
+              <span className="sr-only">Center</span>
+            </Button>
+            <span>{zoomLevel}%</span>
+          </div>
         </div>
       </div>
     </SidebarProvider>
