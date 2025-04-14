@@ -44,7 +44,7 @@ export const Canvas: React.FC = () => {
         ref={canvasRef}
         width={800}
         height={600}
-        className="flex-1 bg-background cursor-crosshair"
+        className="flex-grow bg-background cursor-crosshair"
         style={{ border: '1px solid #000' }} // Basic border for visibility
         onMouseDown={handleMouseDown}
         onMouseUp={handleMouseUp}
@@ -52,3 +52,4 @@ export const Canvas: React.FC = () => {
     </div>
   );
 };
+
