@@ -26,14 +26,18 @@ export default function HomePage() {
   return (
     <SidebarProvider>
       <div className="flex h-screen w-full">
-        <Canvas zoomLevel={zoomLevel} />
+        {/* Annotation Toolbar on the Left */}
         <AnnotationToolbar/>
-        
+
+        {/* Canvas occupies the center */}
+        <Canvas zoomLevel={zoomLevel} />
+
+        {/* Future Development Toolbar on the Right */}
         <div className="fixed top-0 right-0 h-full">
           <FutureDevelopmentToolbar />
         </div>
 
-        {/* Zoom Controls */}
+        {/* Zoom Controls on the Bottom Right */}
         <div className="absolute bottom-4 right-4 bg-secondary/75 backdrop-blur-sm rounded-lg p-2 flex items-center space-x-2">
           <Button variant="outline" size="icon" onClick={handleZoomIn}>
             <ZoomIn className="h-4 w-4"/>
@@ -53,6 +57,3 @@ export default function HomePage() {
     </SidebarProvider>
   );
 }
-
-
-    
