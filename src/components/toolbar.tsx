@@ -4,7 +4,7 @@ import React from 'react';
 import { Button } from "@/components/ui/button";
 import {
   MousePointerIcon,
-  Rectangle as RectangleIcon,
+  RectangleVertical as Rectangle,
   Circle,
   ArrowRight,
   PencilIcon,
@@ -25,7 +25,7 @@ export const ToolBar: React.FC<ToolBarProps> = ({ onToolChange }) => {
         <span className="sr-only">Select</span>
       </Button>
       <Button variant="ghost" size="icon" className="mb-2" onClick={() => onToolChange('rectangle')}>
-        <RectangleIcon className="h-5 w-5" />
+        <Rectangle className="h-5 w-5" />
         <span className="sr-only">Rectangle</span>
       </Button>
       <Button variant="ghost" size="icon" className="mb-2" onClick={() => onToolChange('circle')}>
