@@ -1,4 +1,3 @@
-
 "use client";
 
 import React from 'react';
@@ -10,7 +9,8 @@ import {
   ArrowRight,
   PencilIcon,
   ImageIcon,
-  TextIcon
+  TextIcon,
+  Text,
 } from "lucide-react";
 
 interface ToolBarProps {
@@ -44,6 +44,10 @@ export const AnnotationToolbar: React.FC<ToolBarProps> = ({ onToolChange }) => {
         <TextIcon className="h-5 w-5" />
         <span className="sr-only">Text</span>
       </Button>
+       <Button variant="ghost" size="icon" className="mb-2" onClick={() => onToolChange('textEdit')}>
+        <Text className="h-5 w-5" />
+        <span className="sr-only">Edit Text</span>
+      </Button>
       <Button variant="ghost" size="icon" className="mb-2" onClick={() => onToolChange('image')}>
         <ImageIcon className="h-5 w-5" />
         <span className="sr-only">Image</span>
@@ -51,4 +55,3 @@ export const AnnotationToolbar: React.FC<ToolBarProps> = ({ onToolChange }) => {
     </div>
   );
 };
-
