@@ -96,7 +96,7 @@ export default function HomePage() {
 
           {/* Canvas occupies the center */}
           <div ref={canvasRef} className="flex-grow overflow-auto">
-            <Canvas zoomLevel={zoomLevel} />
+            <Canvas zoomLevel={zoomLevel} selectedTool={selectedTool} />
           </div>
 
           {/* Future Development Toolbar on the Right */}
