@@ -53,12 +53,13 @@ export default function HomePage() {
         <header className="flex items-center justify-between h-14 bg-secondary/75 backdrop-blur-sm text-sm font-medium border-b border-border px-4">
           <div className="flex items-center">
             <span className="font-bold">Firebase Studio App</span>
-            <nav className="ml-6 flex items-center space-x-4">
-              <a href="#" className="hover:underline">File</a>
-              <a href="#" className="hover:underline">Edit</a>
-              <a href="#" className="hover:underline">View</a>
-            </nav>
           </div>
+          <nav className="flex items-center space-x-4 justify-center">
+            {/* Centered Navigation Links */}
+            <a href="#" className="hover:underline">File</a>
+            <a href="#" className="hover:underline">Edit</a>
+            <a href="#" className="hover:underline">View</a>
+          </nav>
           <div>
             {/* User Icon Placeholder */}
             <Button variant="ghost" size="icon">
