@@ -8,6 +8,9 @@ const nextConfig: NextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  compiler: {
+    allowedDevOrigins: ['http://localhost:3000']
+  }
 };
 
 export default nextConfig;
